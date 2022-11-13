@@ -50,7 +50,9 @@ void cList::deleteNode()
 
 }
 
-void cList::deleteLastNode()
+// -> deleteLastNode Did not work how expected
+
+/*void cList::deleteLastNode()
 {
     Node* aux = list;
     while (aux->next != NULL)
@@ -58,7 +60,7 @@ void cList::deleteLastNode()
         aux = aux->next;
     }
     delete aux;
-}
+}*/
 
 int cList::getLength()
 {
