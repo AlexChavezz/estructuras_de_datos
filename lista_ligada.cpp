@@ -1,87 +1,63 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-// class cLista
-// {
-// private:
-//     class Nodo
-//     {
-//         public:
-//             int dato;
-//             Nodo *siguiente;
-//     };
-//     Nodo* list;
-// };
 
-class cLista 
-{
-    public:
-    int n;
-    cLista* siguiente;
-    cLista()
+class cList {
+    protected:
+    class Node
     {
-        n=0;
-        siguiente=NULL;
-    }
-    void crearLista();
-    void mostrarLista(cLista* lista);
+        public:
+        Node * next;
+        int age;
+        string name;
+        Node(int _age, string _name)
+        {
+            age = _age;
+            name = _name;
+        }
+    };
+    Node* list;
+    public:
+    void addNode(int age, string name);
+    void printList();
 };
 
-void cLista::crearLista()
+void cList::addNode(int age, string name)
 {
-    int size;
-    cout<<"Cuantos noodos requieres en la lista"<<endl;
-    cin>>size;
-    for(int i=0;i<size;i++)
+    Node* newNode = new Node(age, name);
+    if(list == NULL)
     {
-        cLista* nuevo=new cLista();
-        cout<<"Ingresa el dato del nodo "<<i+1<<endl;
-        cin>>nuevo->n;
-        if(siguiente==NULL)
-        {
-            siguiente=nuevo;
-        }
-        else
-        {
-            cLista* aux=siguiente;
-            while(aux->siguiente!=NULL)
-            {
-                aux=aux->siguiente;
-            }
-            aux->siguiente=nuevo;
-        }
-
+        list = newNode;
     }
-    // cLista* lista = new cLista();
-    // lista->n = numero;
-    // cout<< numero<<" asingnado"<<endl;
-    for(int i=0; i<size; i++)
+    else 
     {
-        cLista
-        // lista->siguiente = new cLista();
-        // lista = lista->siguiente;
-        // lista->n = i;
-        // cout<< i<<" asingnado"<<endl;
+        Node* aux = list;
+        while( aux->next != NULL)
+        {
+            aux = aux->next;
+        }
+        aux->next = newNode;
     }
-    // cLista* lista = new cLista;
-    // cLista* aux = lista;
-    // int n;
-    // cout << "Ingrese un numero: ";
-    // cin >> n;
-    // while(n != 0)
-    // {
-    //     aux->n = n;
-    //     aux->siguiente = new cLista;
-    //     aux = aux->siguiente;
-    //     cout << "Ingrese un numero: ";
-    //     cin >> n;
-    // }
-    // mostrarLista(lista);
 }
+
+void cList::printList()
+{
+    Node * aux;
+    for(aux = list; aux != NULL; aux = aux->next)
+    {
+        cout<<"Hello my name's "<<aux->name<<" and i'm "<<aux->age<<" years old."<<endl;
+    }
+}
+
+
 
 int main()
 {
-    cLista *obj = new cLista(); 
-    obj->crearLista(20);
+    cList* list = new cList();
+    list->addNode(21 ,"alexis");
+    list->addNode(15, "Diego");
+    list->addNode(12, "Melissa");
+
     return 0;
 }
