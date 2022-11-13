@@ -21,6 +21,8 @@ class cList {
     public:
     void addNode(int age, string name);
     void printList();
+    void deleteNode();
+    void deleteLastNode();
 };
 
 void cList::addNode(int age, string name)
@@ -41,6 +43,24 @@ void cList::addNode(int age, string name)
     }
 }
 
+void cList::deleteNode()
+{
+    // Node aux
+
+}
+
+void cList::deleteLastNode()
+{
+    Node* aux = list;
+    while(aux->next != NULL)
+    {
+        aux = aux->next;
+    }
+    delete aux;
+}
+
+
+
 void cList::printList()
 {
     Node * aux;
@@ -50,7 +70,7 @@ void cList::printList()
     }
 }
 
-
+// aux length
 
 int main()
 {
@@ -58,6 +78,6 @@ int main()
     list->addNode(21 ,"alexis");
     list->addNode(15, "Diego");
     list->addNode(12, "Melissa");
-
+    list->printList();
     return 0;
 }
