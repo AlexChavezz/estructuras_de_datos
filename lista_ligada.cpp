@@ -2,13 +2,13 @@
 #include <string>
 using namespace std;
 
-class cList
-{
+
+class cList {
 protected:
     class Node
     {
     public:
-        Node *next;
+        Node* next;
         int age;
         string name;
         Node(int _age, string _name)
@@ -17,8 +17,7 @@ protected:
             name = _name;
         }
     };
-    Node *list;
-
+    Node* list;
 public:
     void addNode(int age, string name);
     void printList();
@@ -29,14 +28,14 @@ public:
 
 void cList::addNode(int age, string name)
 {
-    Node *newNode = new Node(age, name);
+    Node* newNode = new Node(age, name);
     if (list == NULL)
     {
         list = newNode;
     }
     else
     {
-        Node *aux = list;
+        Node* aux = list;
         while (aux->next != NULL)
         {
             aux = aux->next;
@@ -48,11 +47,12 @@ void cList::addNode(int age, string name)
 void cList::deleteNode()
 {
     // Node aux
+
 }
 
 void cList::deleteLastNode()
 {
-    Node *aux = list;
+    Node* aux = list;
     while (aux->next != NULL)
     {
         aux = aux->next;
@@ -62,8 +62,8 @@ void cList::deleteLastNode()
 
 int cList::getLength()
 {
-    int counter;
-    Node *aux;
+    int counter = 0;
+    Node* aux;
     for (aux = list; aux != NULL; aux = aux->next)
     {
         counter++;
@@ -71,12 +71,24 @@ int cList::getLength()
     return counter;
 }
 
+
 void cList::printList()
 {
-    Node *aux;
-    for (aux = list; aux != NULL; aux = aux->next)
+    Node* aux = list;
+    
+    // -> Standard way to print each node
+
+    /*for (aux = list; aux != NULL; aux = aux->next)
     {
         cout << "Hello my name's " << aux->name << " and i'm " << aux->age << " years old." << endl;
+    }*/
+
+    // -> Another FUNY road to print all nodes
+    int i = -1;
+    while (i++, i < getLength())
+    {
+        cout << "Hello my name's " << aux->name << " and i'm " << aux->age << " years old." << endl;
+        aux = aux->next;
     }
 }
 
@@ -84,11 +96,12 @@ void cList::printList()
 
 int main()
 {
-    cList *list = new cList();
+    cList* list = new cList();
     list->addNode(21, "alexis");
     list->addNode(15, "Diego");
     list->addNode(12, "Melissa");
-    list->printList();
+    list->addNode(12, "Jose");
     cout << list->getLength();
+    list->printList();
     return 0;
 }
